@@ -12,10 +12,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 @Entity
 @Table(name = "employee")
 public class Employee {
@@ -34,6 +31,10 @@ public class Employee {
     private Employee manager;
     @OneToMany(mappedBy = "manager", fetch = FetchType.EAGER)
     private List<Employee> subordinates = new ArrayList<>();
+
+    public static Employee instance(String name, EmployeeType employeeType) {
+        return Employee.builder().name(name).employeeType(employeeType).build();
+    }
 
     public EmployeeDTO toDto() {
         Employee employee = this;
