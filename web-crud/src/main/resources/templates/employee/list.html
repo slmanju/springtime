@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Employees : View all</title>
+</head>
+<body>
+<div layout:fragment="header">
+    Employees : View all
+    <a th:href="@{/employee/save}" class="pull-right btn">Create Employee</a>
+</div>
+<div layout:fragment="content">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${employees.empty}">
+            <td colspan="3">No employees</td>
+        </tr>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.id}">1</td>
+            <td th:text="${employee.username}">manju</td>
+            <td th:text="${employee.firstName}">manju</td>
+            <td th:text="${employee.lastName}">manju</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
