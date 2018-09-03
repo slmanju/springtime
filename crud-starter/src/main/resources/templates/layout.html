@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Layout</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default navbar-expand-md fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Spring Starter</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/}" href="index.html">Home</a></li>
+                <li><a th:href="@{/employees}" href="employee/list.html">Employees</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div layout:fragment="header">Layout</div>
+        </div>
+        <div class="panel-body">
+            <div layout:fragment="content">content</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+insert into employee (username) values ('Manjula');

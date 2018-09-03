@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Employee : View</title>
+</head>
+<body>
+<div layout:fragment="header">
+    Employee : View
+</div>
+<div layout:fragment="content">
+    <div th:object="${employee}" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="id">Id:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="id"
+                       th:field="*{id}" th:disabled="disabled" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="username">Username:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="username"
+                       th:field="*{username}" th:disabled="disabled" />
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
