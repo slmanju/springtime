@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.List;
 
+import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 
 @Service
@@ -47,28 +48,25 @@ public class TwitterServiceImpl implements TwitterService {
         Twitter twitter = twitterRepository.findById(id).get();
         Twitter twitterFollowing = twitterRepository.findById(followingId).get();
         twitter.addFollowing(twitterFollowing);
-        twitter = twitterRepository.save(twitter);
-        return twitter.toDto();
+        return twitterRepository.save(twitter).toDto();
     }
 
     @Override
     public List<TwitterDTO> findFollowings(Long id) {
         return twitterRepository.findById(id)
                 .map(twitter -> twitter.getFollowings()
-                .stream()
-                .map(Twitter::toDto)
-                .collect(toList()))
-                .orElse(null);
+                    .stream().map(Twitter::toDto)
+                    .collect(toList()))
+                .orElse(emptyList());
     }
 
     @Override
     public List<TwitterDTO> findFollowers(Long id) {
         return twitterRepository.findById(id)
                 .map(twitter -> twitter.getFollowers()
-                        .stream()
-                        .map(Twitter::toDto)
+                        .stream().map(Twitter::toDto)
                         .collect(toList()))
-                .orElse(null);
+                .orElse(emptyList());
     }
 
 }
