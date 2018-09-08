@@ -1,6 +1,7 @@
 package com.manjula.relationships.manytomanyextra.domain.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 @Entity
 @Table(name = "many_to_many_extra_developer_project")
 public class ManyToManyExtraDeveloperProject implements Serializable {
@@ -26,6 +27,18 @@ public class ManyToManyExtraDeveloperProject implements Serializable {
 
     @Column(name = "project_task")
     private String task;
+
+    public static ManyToManyExtraDeveloperProject instance(
+            ManyToManyExtraDeveloper developer,
+            ManyToManyExtraProject project,
+            String task) {
+        return ManyToManyExtraDeveloperProject.builder()
+                .developer(developer)
+                .project(project)
+                .task(task)
+                .id(new ManyToManyExtraDeveloperProjectId(developer.getId(), project.getId()))
+                .build();
+    }
 
     @Override
     public boolean equals(Object o) {

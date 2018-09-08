@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-//@Data @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 public class ManyToManyExtraDeveloperProjectId implements Serializable {
 
     @Column(name = "developer_id")
@@ -33,22 +33,6 @@ public class ManyToManyExtraDeveloperProjectId implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(developerId, projectId);
-    }
-
-    public Long getDeveloperId() {
-        return developerId;
-    }
-
-    public void setDeveloperId(Long developerId) {
-        this.developerId = developerId;
-    }
-
-    public Long getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
     }
 
 }

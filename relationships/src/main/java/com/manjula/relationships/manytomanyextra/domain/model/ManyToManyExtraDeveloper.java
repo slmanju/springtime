@@ -41,10 +41,7 @@ public class ManyToManyExtraDeveloper implements Serializable {
     }
 
     public void addProject(ManyToManyExtraProject project, String task) {
-        ManyToManyExtraDeveloperProject developerProject = new ManyToManyExtraDeveloperProject();
-        developerProject.setDeveloper(this);
-        developerProject.setProject(project);
-        developerProject.setTask(task);
+        ManyToManyExtraDeveloperProject developerProject = ManyToManyExtraDeveloperProject.instance(this, project, task);
 
         projects.add(developerProject);
         project.getDevelopers().add(developerProject);
