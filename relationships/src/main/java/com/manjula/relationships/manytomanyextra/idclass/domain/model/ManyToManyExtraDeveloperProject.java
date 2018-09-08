@@ -1,4 +1,4 @@
-package com.manjula.relationships.manytomanyextra.domain.model;
+package com.manjula.relationships.manytomanyextra.idclass.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,17 +12,17 @@ import java.util.Objects;
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 @Entity
 @Table(name = "many_to_many_extra_developer_project")
+@IdClass(ManyToManyExtraDeveloperProjectId.class)
 public class ManyToManyExtraDeveloperProject implements Serializable {
 
-    @EmbeddedId
-    private ManyToManyExtraDeveloperProjectId id;
-
+    @Id
     @ManyToOne
-    @MapsId("developerId")
+    @JoinColumn(name = "developer_id", referencedColumnName = "id")
     private ManyToManyExtraDeveloper developer;
 
+    @Id
     @ManyToOne
-    @MapsId("projectId")
+    @JoinColumn(name = "project_id", referencedColumnName = "id")
     private ManyToManyExtraProject project;
 
     @Column(name = "project_task")
@@ -32,12 +32,11 @@ public class ManyToManyExtraDeveloperProject implements Serializable {
             ManyToManyExtraDeveloper developer,
             ManyToManyExtraProject project,
             String task) {
-        return ManyToManyExtraDeveloperProject.builder()
-                .developer(developer)
-                .project(project)
-                .task(task)
-                .id(new ManyToManyExtraDeveloperProjectId(developer.getId(), project.getId()))
-                .build();
+        ManyToManyExtraDeveloperProject developerProject = new ManyToManyExtraDeveloperProject();
+        developerProject.setDeveloper(developer);
+        developerProject.setProject(project);
+        developerProject.setTask(task);
+        return developerProject;
     }
 
     @Override

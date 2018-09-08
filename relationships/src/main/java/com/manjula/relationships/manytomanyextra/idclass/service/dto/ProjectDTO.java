@@ -1,4 +1,4 @@
-package com.manjula.relationships.manytomanyextra.service.dto;
+package com.manjula.relationships.manytomanyextra.idclass.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

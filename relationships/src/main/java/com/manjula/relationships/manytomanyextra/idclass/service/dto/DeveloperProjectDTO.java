@@ -1,4 +1,4 @@
-package com.manjula.relationships.manytomanyextra.service.dto;
+package com.manjula.relationships.manytomanyextra.idclass.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,9 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
-public class DeveloperDTO {
+public class DeveloperProjectDTO {
 
-    private Long id;
-    private String name;
+    private ProjectDTO projectDTO;
+    private String task;
 
 }

@@ -1,6 +1,6 @@
-package com.manjula.relationships.manytomanyextra.domain.model;
+package com.manjula.relationships.manytomanyextra.idclass.domain.model;
 
-import com.manjula.relationships.manytomanyextra.service.dto.ProjectDTO;
+import com.manjula.relationships.manytomanyextra.idclass.service.dto.ProjectDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +12,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 @Entity
@@ -27,16 +28,13 @@ public class ManyToManyExtraProject implements Serializable {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "project",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<ManyToManyExtraDeveloperProject> developers = Collections.emptyList();
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ManyToManyExtraDeveloperProject> developers = emptyList();
 
     public static ManyToManyExtraProject instance(String name) {
         return ManyToManyExtraProject.builder()
                 .name(name)
-                .developers(Collections.emptyList())
+                .developers(emptyList())
                 .build();
     }
 

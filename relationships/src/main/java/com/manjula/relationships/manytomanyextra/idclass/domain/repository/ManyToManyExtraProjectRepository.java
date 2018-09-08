@@ -1,6 +1,6 @@
-package com.manjula.relationships.manytomanyextra.domain.repository;
+package com.manjula.relationships.manytomanyextra.idclass.domain.repository;
 
-import com.manjula.relationships.manytomanyextra.domain.model.ManyToManyExtraProject;
+import com.manjula.relationships.manytomanyextra.idclass.domain.model.ManyToManyExtraProject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,8 @@
-package com.manjula.relationships.manytomanyextra.web;
+package com.manjula.relationships.manytomanyextra.idclass.web;
 
-import com.manjula.relationships.manytomanyextra.service.ManyToManyExtraService;
-import com.manjula.relationships.manytomanyextra.service.dto.DeveloperDTO;
-import com.manjula.relationships.manytomanyextra.service.dto.ProjectDTO;
+import com.manjula.relationships.manytomanyextra.idclass.service.ManyToManyExtraService;
+import com.manjula.relationships.manytomanyextra.idclass.service.dto.DeveloperDTO;
+import com.manjula.relationships.manytomanyextra.idclass.service.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

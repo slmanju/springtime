@@ -1,11 +1,11 @@
-package com.manjula.relationships.manytomanyextra.service;
+package com.manjula.relationships.manytomanyextra.idclass.service;
 
-import com.manjula.relationships.manytomanyextra.domain.model.ManyToManyExtraDeveloper;
-import com.manjula.relationships.manytomanyextra.domain.model.ManyToManyExtraProject;
-import com.manjula.relationships.manytomanyextra.domain.repository.ManyToManyExtraDeveloperRepository;
-import com.manjula.relationships.manytomanyextra.domain.repository.ManyToManyExtraProjectRepository;
-import com.manjula.relationships.manytomanyextra.service.dto.DeveloperDTO;
-import com.manjula.relationships.manytomanyextra.service.dto.ProjectDTO;
+import com.manjula.relationships.manytomanyextra.idclass.domain.model.ManyToManyExtraDeveloper;
+import com.manjula.relationships.manytomanyextra.idclass.domain.model.ManyToManyExtraProject;
+import com.manjula.relationships.manytomanyextra.idclass.domain.repository.ManyToManyExtraDeveloperRepository;
+import com.manjula.relationships.manytomanyextra.idclass.domain.repository.ManyToManyExtraProjectRepository;
+import com.manjula.relationships.manytomanyextra.idclass.service.dto.DeveloperDTO;
+import com.manjula.relationships.manytomanyextra.idclass.service.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,11 +69,7 @@ public class ManyToManyExtraServiceImpl implements ManyToManyExtraService {
     public void assign(Long developerId, Long projectId, String task) {
         ManyToManyExtraDeveloper developer = developerRepository.findById(developerId).get();
 
-        System.out.println("developer " + developer.getName());
-
         ManyToManyExtraProject project = projectRepository.findById(projectId).get();
-
-        System.out.println("project " + project.getName());
 
         developer.addProject(project, task);
 

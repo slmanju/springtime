@@ -1,6 +1,6 @@
-package com.manjula.relationships.manytomanyextra.domain.model;
+package com.manjula.relationships.manytomanyextra.idclass.domain.model;
 
-import com.manjula.relationships.manytomanyextra.service.dto.DeveloperDTO;
+import com.manjula.relationships.manytomanyextra.idclass.service.dto.DeveloperDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 @Entity
@@ -20,23 +21,13 @@ public class ManyToManyExtraDeveloper implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "developer",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<ManyToManyExtraDeveloperProject> projects = Collections.emptyList();
+    @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ManyToManyExtraDeveloperProject> projects = emptyList();
 
     public static ManyToManyExtraDeveloper instance(String name) {
         return ManyToManyExtraDeveloper.builder()
                 .name(name)
-                .projects(Collections.emptyList())
-                .build();
-    }
-
-    public DeveloperDTO toDTO() {
-        return DeveloperDTO.builder()
-                .id(id)
-                .name(name)
+                .projects(emptyList())
                 .build();
     }
 
@@ -44,7 +35,13 @@ public class ManyToManyExtraDeveloper implements Serializable {
         ManyToManyExtraDeveloperProject developerProject = ManyToManyExtraDeveloperProject.instance(this, project, task);
 
         projects.add(developerProject);
-        project.getDevelopers().add(developerProject);
+    }
+
+    public DeveloperDTO toDTO() {
+        return DeveloperDTO.builder()
+                .id(id)
+                .name(name)
+                .build();
     }
 
 }
