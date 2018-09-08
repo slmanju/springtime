@@ -3,7 +3,6 @@ package com.manjula.relationships.manytomanyextra.mapsid.service.impl;
 import com.manjula.relationships.manytomanyextra.mapsid.domain.model.Post;
 import com.manjula.relationships.manytomanyextra.mapsid.domain.model.Tag;
 import com.manjula.relationships.manytomanyextra.mapsid.domain.repository.PostRepository;
-import com.manjula.relationships.manytomanyextra.mapsid.domain.repository.PostTagRepository;
 import com.manjula.relationships.manytomanyextra.mapsid.domain.repository.TagRepository;
 import com.manjula.relationships.manytomanyextra.mapsid.service.ExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,6 @@ public class ExtraServiceImpl implements ExtraService {
     private PostRepository postRepository;
     @Autowired
     private TagRepository tagRepository;
-    @Autowired
-    private PostTagRepository postTagRepository;
 
     @PostConstruct
     public void init() {
