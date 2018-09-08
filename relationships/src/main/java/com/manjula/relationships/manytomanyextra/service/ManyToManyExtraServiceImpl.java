@@ -8,6 +8,7 @@ import com.manjula.relationships.manytomanyextra.service.dto.DeveloperDTO;
 import com.manjula.relationships.manytomanyextra.service.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Service
+@Transactional
 public class ManyToManyExtraServiceImpl implements ManyToManyExtraService {
 
     @Autowired
@@ -65,7 +67,17 @@ public class ManyToManyExtraServiceImpl implements ManyToManyExtraService {
 
     @Override
     public void assign(Long developerId, Long projectId, String task) {
+        ManyToManyExtraDeveloper developer = developerRepository.findById(developerId).get();
 
+        System.out.println("developer " + developer.getName());
+
+        ManyToManyExtraProject project = projectRepository.findById(projectId).get();
+
+        System.out.println("project " + project.getName());
+
+        developer.addProject(project, task);
+
+        developerRepository.save(developer);
     }
 
 }
