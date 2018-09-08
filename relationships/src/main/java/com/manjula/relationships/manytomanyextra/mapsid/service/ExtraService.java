@@ -1,4 +1,4 @@
-package com.manjula.relationships.manytomanyextra2.service;
+package com.manjula.relationships.manytomanyextra.mapsid.service;
 
 public interface ExtraService {
 

@@ -1,4 +1,4 @@
-package com.manjula.relationships.manytomanyextra2.domain.model;
+package com.manjula.relationships.manytomanyextra.mapsid.domain.model;
 
 import lombok.Data;
 import org.hibernate.annotations.Cache;
@@ -13,7 +13,7 @@ import java.util.Objects;
 
 @Data
 @Entity(name = "Tag")
-@Table(name = "extra2_tag")
+@Table(name = "many_to_many_extra_mapsid_tag")
 @NaturalIdCache
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Tag {

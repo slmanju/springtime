@@ -1,6 +1,6 @@
-package com.manjula.relationships.manytomanyextra2.web;
+package com.manjula.relationships.manytomanyextra.mapsid.web;
 
-import com.manjula.relationships.manytomanyextra2.service.ExtraService;
+import com.manjula.relationships.manytomanyextra.mapsid.service.ExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

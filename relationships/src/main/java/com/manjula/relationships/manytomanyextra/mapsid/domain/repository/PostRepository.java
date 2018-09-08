@@ -1,6 +1,6 @@
-package com.manjula.relationships.manytomanyextra2.domain.repository;
+package com.manjula.relationships.manytomanyextra.mapsid.domain.repository;
 
-import com.manjula.relationships.manytomanyextra2.domain.model.Post;
+import com.manjula.relationships.manytomanyextra.mapsid.domain.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

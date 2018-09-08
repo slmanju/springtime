@@ -1,4 +1,4 @@
-package com.manjula.relationships.manytomanyextra2.domain.model;
+package com.manjula.relationships.manytomanyextra.mapsid.domain.model;
 
 import lombok.Data;
 

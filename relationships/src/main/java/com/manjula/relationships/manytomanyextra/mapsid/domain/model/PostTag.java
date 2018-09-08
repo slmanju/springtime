@@ -1,4 +1,4 @@
-package com.manjula.relationships.manytomanyextra2.domain.model;
+package com.manjula.relationships.manytomanyextra.mapsid.domain.model;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Data
 @Entity(name = "PostTag")
-@Table(name = "extra2_post_tag")
+@Table(name = "many_to_many_extra_mapsid_post_tag")
 public class PostTag {
 
     @EmbeddedId

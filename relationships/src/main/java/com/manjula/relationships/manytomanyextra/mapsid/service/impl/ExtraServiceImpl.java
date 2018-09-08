@@ -1,13 +1,11 @@
-package com.manjula.relationships.manytomanyextra2.service.impl;
+package com.manjula.relationships.manytomanyextra.mapsid.service.impl;
 
-import com.manjula.relationships.manytomanyextra2.domain.model.Post;
-import com.manjula.relationships.manytomanyextra2.domain.model.PostTag;
-import com.manjula.relationships.manytomanyextra2.domain.model.PostTagId;
-import com.manjula.relationships.manytomanyextra2.domain.model.Tag;
-import com.manjula.relationships.manytomanyextra2.domain.repository.PostRepository;
-import com.manjula.relationships.manytomanyextra2.domain.repository.PostTagRepository;
-import com.manjula.relationships.manytomanyextra2.domain.repository.TagRepository;
-import com.manjula.relationships.manytomanyextra2.service.ExtraService;
+import com.manjula.relationships.manytomanyextra.mapsid.domain.model.Post;
+import com.manjula.relationships.manytomanyextra.mapsid.domain.model.Tag;
+import com.manjula.relationships.manytomanyextra.mapsid.domain.repository.PostRepository;
+import com.manjula.relationships.manytomanyextra.mapsid.domain.repository.PostTagRepository;
+import com.manjula.relationships.manytomanyextra.mapsid.domain.repository.TagRepository;
+import com.manjula.relationships.manytomanyextra.mapsid.service.ExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,13 +45,9 @@ public class ExtraServiceImpl implements ExtraService {
         Post post = postRepository.findById(postId).get();
         Tag tag = tagRepository.findById(tagId).get();
 
-        PostTag postTag = new PostTag();
-        postTag.setPost(post);
-        postTag.setTag(tag);
-        PostTagId id = new PostTagId(postId, tagId);
-        postTag.setId(id);
+        post.addTag(tag);
 
-        postTagRepository.save(postTag);
+        postRepository.save(post);
     }
 
 }
