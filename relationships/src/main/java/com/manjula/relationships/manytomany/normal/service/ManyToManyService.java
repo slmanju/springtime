@@ -1,7 +1,7 @@
-package com.manjula.relationships.manytomany.service;
+package com.manjula.relationships.manytomany.normal.service;
 
-import com.manjula.relationships.manytomany.domain.model.ManyToManyPostDTO;
-import com.manjula.relationships.manytomany.domain.model.ManyToManyTagDTO;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyPostDTO;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyTagDTO;
 
 import java.util.List;
 

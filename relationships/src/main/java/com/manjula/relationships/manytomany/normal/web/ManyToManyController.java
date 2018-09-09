@@ -1,8 +1,8 @@
-package com.manjula.relationships.manytomany.web;
+package com.manjula.relationships.manytomany.normal.web;
 
-import com.manjula.relationships.manytomany.domain.model.ManyToManyPostDTO;
-import com.manjula.relationships.manytomany.domain.model.ManyToManyTagDTO;
-import com.manjula.relationships.manytomany.service.ManyToManyService;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyPostDTO;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyTagDTO;
+import com.manjula.relationships.manytomany.normal.service.ManyToManyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

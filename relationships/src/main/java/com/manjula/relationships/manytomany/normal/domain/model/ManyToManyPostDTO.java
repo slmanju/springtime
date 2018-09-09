@@ -1,4 +1,4 @@
-package com.manjula.relationships.manytomany.domain.model;
+package com.manjula.relationships.manytomany.normal.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

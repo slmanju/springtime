@@ -1,6 +1,6 @@
-package com.manjula.relationships.manytomany.domain.repository;
+package com.manjula.relationships.manytomany.normal.domain.repository;
 
-import com.manjula.relationships.manytomany.domain.model.ManyToManyTag;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyTag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

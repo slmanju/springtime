@@ -1,11 +1,11 @@
-package com.manjula.relationships.manytomany.service;
+package com.manjula.relationships.manytomany.normal.service;
 
-import com.manjula.relationships.manytomany.domain.model.ManyToManyPost;
-import com.manjula.relationships.manytomany.domain.model.ManyToManyPostDTO;
-import com.manjula.relationships.manytomany.domain.model.ManyToManyTag;
-import com.manjula.relationships.manytomany.domain.model.ManyToManyTagDTO;
-import com.manjula.relationships.manytomany.domain.repository.ManyToManyPostRepository;
-import com.manjula.relationships.manytomany.domain.repository.ManyToManyTagRepository;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyPost;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyPostDTO;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyTag;
+import com.manjula.relationships.manytomany.normal.domain.model.ManyToManyTagDTO;
+import com.manjula.relationships.manytomany.normal.domain.repository.ManyToManyPostRepository;
+import com.manjula.relationships.manytomany.normal.domain.repository.ManyToManyTagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
