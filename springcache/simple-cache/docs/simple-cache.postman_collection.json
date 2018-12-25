@@ -1,0 +1,33 @@
+{
+	"variables": [],
+	"info": {
+		"name": "simple-cache",
+		"_postman_id": "632c03d9-bee4-87ef-c9da-6c7de4543c57",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all",
+			"request": {
+				"url": "http://localhost:8080/all",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get by id",
+			"request": {
+				"url": "http://localhost:8080/2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
