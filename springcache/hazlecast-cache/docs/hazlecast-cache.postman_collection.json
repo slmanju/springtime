@@ -1,0 +1,84 @@
+{
+	"variables": [],
+	"info": {
+		"name": "hazlecast-cache",
+		"_postman_id": "632c03d9-bee4-87ef-c9da-6c7de4543c57",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all",
+			"request": {
+				"url": "http://localhost:8080/all",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get by id",
+			"request": {
+				"url": "http://localhost:8080/2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "item update",
+			"request": {
+				"url": "http://localhost:8080/3",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 3,\n\t\"code\": \"code updated\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "item save",
+			"request": {
+				"url": "http://localhost:8080",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 6,\n\t\"code\": \"code 6\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "test cache",
+			"request": {
+				"url": "http://localhost:8080/cache",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
