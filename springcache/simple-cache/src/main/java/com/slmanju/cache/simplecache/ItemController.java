@@ -1,7 +1,11 @@
 package com.slmanju.cache.simplecache;
 
 import java.util.List;
+import java.util.Map.Entry;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,8 +21,27 @@ public class ItemController {
 
     private final ItemService itemService;
     
+    @Autowired
+    private CacheManager cacheManager;
+    
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
+    }
+    
+    @GetMapping("/cache")
+    public void cache() {
+        System.out.println("---------------------->");
+        cacheManager.getCacheNames().forEach(name -> {
+            System.out.println(name);
+            System.out.println(cacheManager.getCache(name));
+            ConcurrentMapCache cache = (ConcurrentMapCache) cacheManager.getCache(name);
+            for (Entry<Object, Object> value : cache.getNativeCache().entrySet()) {
+                System.out.println("key " + value.getKey());
+                System.out.println("Value " + value.getValue());
+            }
+            System.out.println("+----------------------+\n");
+        });
+        System.out.println("<----------------------");
     }
     
     @GetMapping("/all")

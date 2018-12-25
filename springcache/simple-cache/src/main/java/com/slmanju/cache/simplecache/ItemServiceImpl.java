@@ -43,10 +43,11 @@ public class ItemServiceImpl implements ItemService {
     }
     
     @CachePut(cacheNames = "itemCache", key = "#id")
-    public void update(int id, Item item) {
+    public Item update(int id, Item item) {
         items.stream()
             .filter(element -> id == element.getId())
             .forEach(selected -> selected.setCode(item.getCode()));
+        return item;
     }
     
     @CacheEvict(cacheNames = "itemCache", key = "#id")
@@ -55,8 +56,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @CachePut(cacheNames = "itemCache", key = "#item.id")
-    public void save(Item item) {
-        items.add(item);
+    public Item save(Item item) {
+        items.add(item); // this directly modify the list, hence updating all items cache as well.
+        return item;
     }
     
     private void simulateTime() {

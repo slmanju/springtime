@@ -8,10 +8,10 @@ public interface ItemService {
 
     Item findById(int id);
     
-    void update(int id, Item item);
+    Item update(int id, Item item);
     
     void delete(int id);
 
-    void save(Item item);
+    Item save(Item item);
 
 }
