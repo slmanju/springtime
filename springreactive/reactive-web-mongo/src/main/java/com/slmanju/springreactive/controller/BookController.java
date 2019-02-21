@@ -1,6 +1,6 @@
 package com.slmanju.springreactive.controller;
 
-import com.slmanju.springreactive.service.Book;
+import com.slmanju.springreactive.repository.Book;
 import com.slmanju.springreactive.service.BookService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
