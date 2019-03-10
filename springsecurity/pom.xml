@@ -10,6 +10,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>rest-security</module>
+		<module>jwt-auth-service</module>
 	</modules>
 </project>

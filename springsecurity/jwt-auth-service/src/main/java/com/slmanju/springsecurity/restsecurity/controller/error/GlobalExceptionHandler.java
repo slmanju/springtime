@@ -1,4 +1,4 @@
-package com.slmanju.springsecurity.restsecurity.controller;
+package com.slmanju.springsecurity.restsecurity.controller.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
