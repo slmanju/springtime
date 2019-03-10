@@ -7,23 +7,23 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public final class JwtUtils {
 
-    public static final long EXPIRATION_TIME = 864_000_00; // validity 1 day in milliseconds
-    public static final String SECRET_KEY = Base64.getEncoder().encodeToString("these violent delights have violent ends".getBytes());
+    private static final long EXPIRATION_TIME = 86400; // validity 1 day in seconds
+    private static final String SECRET_KEY = Base64.getEncoder().encodeToString("these violent delights have violent ends".getBytes());
     public static final String TOKEN_PREFIX = "Bearer";
 
     public static String authorization(Authentication authentication) {
-        return TOKEN_PREFIX + " " + generate(authentication);
+        return TOKEN_PREFIX + " " + token(authentication);
     }
 
-    public static String generate(Authentication authentication) {
+    public static String token(Authentication authentication) {
         UserPrincipal user = (UserPrincipal) authentication.getPrincipal();
         Claims claims = Jwts.claims().setSubject(user.getUsername());
         claims.put("id", user.getId());
@@ -55,9 +55,8 @@ public final class JwtUtils {
     }
 
     public static List<SimpleGrantedAuthority> getRoles(Claims claims) {
-        @SuppressWarnings("unchecked")
-        List<String> roles = (ArrayList<String>) claims.get("roles");
-        return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        List<String> roles = claims.get("roles", List.class);
+        return roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
     }
     
     public boolean isValidToken(String token) {

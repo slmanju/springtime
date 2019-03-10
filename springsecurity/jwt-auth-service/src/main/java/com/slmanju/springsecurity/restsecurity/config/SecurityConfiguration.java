@@ -1,5 +1,6 @@
 package com.slmanju.springsecurity.restsecurity.config;
 
+import com.slmanju.springsecurity.restsecurity.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,43 +13,35 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.slmanju.springsecurity.restsecurity.service.LoginService;
-
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
-//    @Autowired
-//    private AuthenticationEntryPoint authenticationEntryPoint;
     @Autowired
     private LoginService loginService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-//        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
-        http.cors();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.httpBasic().disable();
-        http.formLogin().disable();
-        http.logout().disable();
-
-        http.addFilterBefore(new JwtAuthenticationFilter(loginService), UsernamePasswordAuthenticationFilter.class);
-
-        http.authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/signin").permitAll()
-                .anyRequest().authenticated();
+        http.csrf().disable()
+            .cors().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .httpBasic().disable()
+            .formLogin().disable()
+            .logout().disable()
+            .addFilterBefore(new JwtAuthenticationFilter(loginService), UsernamePasswordAuthenticationFilter.class)
+            .authorizeRequests()
+            .antMatchers(HttpMethod.POST, "/login").permitAll()
+            .anyRequest().authenticated();
     }
 
     @Autowired
@@ -77,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() throws NoSuchAlgorithmException {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

@@ -16,7 +16,7 @@ public class LoginController {
         this.loginService = loginService;
     }
     
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public String login(@RequestBody LoginView loginView) {
         return loginService.login(loginView.getUsername(), loginView.getPassword());
     }

@@ -8,6 +8,6 @@ public interface LoginService {
 
     String login(String username, String password);
     
-    Optional<UserPrincipal> loadUserByJwtToken(String token);
+    Optional<UserPrincipal> loadUserByJwt(String token);
 
 }
