@@ -28,7 +28,7 @@ public class BookController {
     }
 
     @PostMapping
-    public Book save(Book book) {
+    public Book save(@RequestBody Book book) {
         return bookService.save(book);
     }
 
@@ -38,7 +38,7 @@ public class BookController {
     }
 
     @PutMapping
-    public Book update(Book book) {
+    public Book update(@RequestBody Book book) {
         return bookService.save(book);
     }
 
