@@ -1,0 +1,14 @@
+server:
+  port: 7070
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:mysql://localhost:3306/book_store
+    username: root
+    password: root
+#    initialization-mode: always
+#    schema: classpath:/database/schema.sql # Schema (DDL) script resource references.
+#    data: classpath:/database/data.sql # Data (DML) script resource references.

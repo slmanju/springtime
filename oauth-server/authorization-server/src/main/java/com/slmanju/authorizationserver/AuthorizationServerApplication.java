@@ -21,14 +21,12 @@ public class AuthorizationServerApplication {
     @RequestMapping(value = { "/user" }, produces = "application/json")
     public Map<String, Object> user(OAuth2Authentication user) {
         Map<String, Object> userInfo = new HashMap<>();
-        userInfo.put(
-                "user",
-                user.getUserAuthentication()
-                        .getPrincipal());
-        userInfo.put("authorities",
-                AuthorityUtils.authorityListToSet(
-                        user.getUserAuthentication()
-                                .getAuthorities()));
+        if (user == null) {
+            userInfo.put("invalid", "you must login");
+            return userInfo;
+        }
+        userInfo.put("user", user.getUserAuthentication().getPrincipal());
+        userInfo.put("authorities", AuthorityUtils.authorityListToSet(user.getUserAuthentication().getAuthorities()));
         return userInfo;
     }
 
